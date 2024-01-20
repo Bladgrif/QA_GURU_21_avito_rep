@@ -1,7 +1,7 @@
 package com.avito.tests;
 
 import com.avito.base.TestBase;
-import com.avito.pages.FilteringSearchPage;
+import com.avito.pages.ElectronicsPage;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Owner;
@@ -17,7 +17,8 @@ import org.junit.jupiter.api.Test;
 @Owner("Roman Grigorev")
 
 public class FilteringSearch extends TestBase {
-    FilteringSearchPage filteringSearchPage = new FilteringSearchPage();
+    ElectronicsPage electronicsPage = new ElectronicsPage();
+
     String category = "Электроника";
     String manufacturer = "Apple";
     String model = "iPhone";
@@ -27,13 +28,8 @@ public class FilteringSearch extends TestBase {
     @DisplayName("In the section, we enter a filter for a specific brand of phone, check the search results")
     void FilteringSearchResults() {
         SelenideLogger.addListener("allure", new AllureSelenide());
-
-        filteringSearchPage.openPage()
-//                .mainButtonAllCategoriesShouldBeVisible()
-//                .buttonAllCategoriesClick()
-//                .buttonElectronicsHover(category)
-//                .fieldMobilePhoneClick()
-                .fieldMobilePhoneChoose()
+        electronicsPage.openPageElectronics()
+                .chooseFieldMobilePhone()
                 .fieldManufacturerSet(manufacturer)
                 .filedfromManufacturerClick(manufacturer)
                 .buttonSearchClick()
