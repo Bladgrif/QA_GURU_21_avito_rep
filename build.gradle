@@ -1,0 +1,60 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+def allureVersion = "2.23.0"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
+
+group 'guru.qa'
+version '1.0'
+
+dependencies {
+    testImplementation(
+            'com.codeborne:selenide:6.16.0',
+            'com.github.javafaker:javafaker:1.0.2',
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            'org.junit.jupiter:junit-jupiter:5.9.3',
+            'org.slf4j:slf4j-simple:2.0.7',
+            'org.aeonbits.owner:owner:1.0.4'
+    )
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    testLogging {
+        lifecycle {
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
+
+task avito_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("avito_test")
+    }
+}
