@@ -1,6 +1,5 @@
 package com.avito.tests;
 
-import com.avito.base.TestBase;
 import com.avito.pages.MainPage;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Feature;
@@ -16,7 +15,7 @@ import org.junit.jupiter.api.Test;
 @Feature("Check Category on main page")
 @Owner("Roman Grigorev")
 
-public class ProductSearch extends TestBase {
+public class ProductSearch extends BaseTest {
     MainPage mainPage = new MainPage();
     String model = "iPhone";
     @Test

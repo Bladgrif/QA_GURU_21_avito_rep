@@ -1,6 +1,6 @@
 package com.avito.tests;
 
-import com.avito.base.TestBase;
+import com.avito.base.BaseTest;
 import com.avito.pages.CheckSomeCategoryAndSubcategoryPage;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
@@ -18,7 +18,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 @Feature("Check Category on main page")
 @Owner("Roman Grigorev")
 
-public class CheckCategoryAndSubcategory extends TestBase {
+public class CheckCategoryAndSubcategory extends BaseTest {
 
     CheckSomeCategoryAndSubcategoryPage checkSomeCategoryAndSubcategoryPage = new CheckSomeCategoryAndSubcategoryPage();
 

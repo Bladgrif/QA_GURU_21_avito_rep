@@ -8,26 +8,26 @@ import org.aeonbits.owner.Config;
 })
 
 public interface WebConfig extends Config {
-    @Key("baseUrl")
-    @DefaultValue("https://www.tinkoff.ru")
-    String baseUrl();
-
     @Key("browser")
     @DefaultValue("CHROME")
-    Browser browser();
-
-    @Key("browserSize")
-    @DefaultValue("2560x1440")
-    String browserSize();
+    Browser getBrowser();
 
     @Key("browserVersion")
     @DefaultValue("100.0")
-    String browserVersion();
+    String getBrowserVersion();
 
-    @Key("remoteUrl")
-    String remoteUrl();
+    @Key("browserSize")
+    @DefaultValue("1920x1080")
+    String getBrowserSize();
+
+    @Key("baseURL")
+    @DefaultValue("https://avito.ru")
+    String getBaseURL();
 
     @Key("isRemote")
     @DefaultValue("false")
     Boolean isRemote();
+
+    @Key("remoteURL")
+    String getRemoteURL();
 }
